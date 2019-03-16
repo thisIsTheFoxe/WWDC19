@@ -32,10 +32,11 @@ class StackViewController: UIViewController {
         
         //TODO: Add result label
         
-        outLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 700, height: 80))
+        outLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 50, height: 80))
+        outLabel.text = ""
         outLabel.backgroundColor = .yellow
         outLabel.center = CGPoint(x: view.center.x, y: view.center.y - 120)
-        outLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 30, weight: .regular)
+        outLabel.font = UIFont(name: "Menlo", size: 30)
         outLabel.adjustsFontSizeToFitWidth = true
         outLabel.textAlignment = .center
         view.addSubview(outLabel)
@@ -93,7 +94,7 @@ class StackViewController: UIViewController {
             
         }
         let str = """
-🤟👉1️⃣👍3️⃣🤟👉1️⃣👍3️⃣👈1️⃣👎1️⃣🤘👈1️⃣👎1️⃣🤘
+👍2️⃣🤟👉1️⃣👍3️⃣🤟👉1️⃣👍3️⃣🎉👈1️⃣👎1️⃣🤘👈1️⃣👎1️⃣🤘
 🛑
 """
         setEmojiCode(str)
@@ -102,6 +103,11 @@ class StackViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         DispatchQueue.main.async {
+            self.outLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: 80)
+            self.outLabel.backgroundColor = .yellow
+            self.outLabel.center = CGPoint(x: self.view.center.x, y: (self.view.center.y + 150) / 2)
+            self.outLabel.font = UIFont(name: "Menlo", size: 30)
+            self.outLabel.adjustsFontSizeToFitWidth = true
             
             self.codeLabel.center = CGPoint(x: self.view.center.x, y: 100)
             let viewSize = (self.view.frame.width / 8) - 10
@@ -109,7 +115,7 @@ class StackViewController: UIViewController {
             for sView in self.stackViews{
                 let newFrame = CGRect(x: (CGFloat(i)*(viewSize+9)) + 9, y: 0, width: viewSize, height: viewSize*1.5)
                 sView.frame = newFrame
-                sView.center.y = self.view.center.y + 50
+                sView.center.y = self.view.center.y + 75
                 i += 1
             }
             
@@ -120,7 +126,6 @@ class StackViewController: UIViewController {
                 self.stackLabels[i].numberOfLines = 1
                 self.stackLabels[i].font = UIFont.systemFont(ofSize: 30)
                 self.stackLabels[i].adjustsFontSizeToFitWidth = true
-                self.stackLabels[i].textAlignment = .center
                 self.stackLabels[i].updateText()
             }
             
@@ -129,7 +134,6 @@ class StackViewController: UIViewController {
             self.poitnerLabel.center.x = self.stackViews[0].center.x
             self.poitnerLabel.font = UIFont.systemFont(ofSize: 50)
             self.poitnerLabel.adjustsFontSizeToFitWidth = true
-            self.poitnerLabel.textAlignment = .center
         }
     }
     
@@ -224,7 +228,10 @@ class StackViewController: UIViewController {
                     pc = retrunIx
                 }
                 case .In : fatalError("NoInput?")
-                case .Out : fatalError("WhereIsOut?")
+                case .Out: guard let scalar = Unicode.Scalar(machine.Out()) else { fatalError("NoUniCode") }
+                DispatchQueue.main.asyncAfter(deadline: delay) {
+                    self.outLabel.text?.append(scalar.escaped(asASCII: true))
+                }
                 case .End:
                     prgEnd = true
                     DispatchQueue.main.asyncAfter(deadline: delay) {

@@ -7,9 +7,11 @@
 //
 //#-end-hidden-code
 import PlaygroundSupport
-let str = """
+let str: EmojiCode = """
 👍2️⃣🤟👎1️⃣👉1️⃣👍8️⃣👈1️⃣🤘
 👍1️⃣
 🛑
 """
-send(emojiCode: str)
+
+str.validate()
+str.execute()
