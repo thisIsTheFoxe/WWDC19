@@ -6,5 +6,10 @@
 //  The Swift file containing the source code edited by the user of this playground book.
 //
 //#-end-hidden-code
-let str = "👍1️⃣🛑"
+import PlaygroundSupport
+let str = """
+👍2️⃣🤟👎1️⃣👉1️⃣👍8️⃣👈1️⃣🤘
+👍1️⃣
+🛑
+"""
 send(emojiCode: str)

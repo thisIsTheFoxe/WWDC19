@@ -29,6 +29,7 @@ public func instantiateLiveView() -> PlaygroundLiveViewable {
 public func send(emojiCode: String){
     
     let page = PlaygroundPage.current
+    
     if let proxy = page.liveView as? PlaygroundRemoteLiveViewProxy {
         let message: PlaygroundValue = .string(emojiCode)
         proxy.send(message)

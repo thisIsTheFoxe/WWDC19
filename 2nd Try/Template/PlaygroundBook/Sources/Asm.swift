@@ -86,7 +86,12 @@ public class Asm{
     }
     
     public func END(){
-        
+        StackViewController.isDone = true
+    }
+    
+    public func reset(){
+        mem = [0,0,0,0,0,0,0,0]
+        memPointer = 0
     }
 }
 

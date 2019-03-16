@@ -24,6 +24,8 @@
 		D5ACC4D9223C09FD00CEADF0 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC4D8223C09FD00CEADF0 /* StackViewController.swift */; };
 		D5ACC4DB223C173E00CEADF0 /* Asm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC4DA223C173E00CEADF0 /* Asm.swift */; };
 		D5ACC4DD223C17EF00CEADF0 /* StackEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC4DC223C17EF00CEADF0 /* StackEmoji.swift */; };
+		D5ACC4DF223D161200CEADF0 /* StackLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC4DE223D161200CEADF0 /* StackLabel.swift */; };
+		D5ACC4E1223D8ACD00CEADF0 /* EmojiCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC4E0223D8ACD00CEADF0 /* EmojiCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -118,6 +120,8 @@
 		D5ACC4D8223C09FD00CEADF0 /* StackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
 		D5ACC4DA223C173E00CEADF0 /* Asm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asm.swift; sourceTree = "<group>"; };
 		D5ACC4DC223C17EF00CEADF0 /* StackEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackEmoji.swift; sourceTree = "<group>"; };
+		D5ACC4DE223D161200CEADF0 /* StackLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackLabel.swift; sourceTree = "<group>"; };
+		D5ACC4E0223D8ACD00CEADF0 /* EmojiCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +264,8 @@
 				5EF2F9AD2054BBF300191409 /* LiveViewController.swift */,
 				5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */,
 				D5ACC4D8223C09FD00CEADF0 /* StackViewController.swift */,
+				D5ACC4DE223D161200CEADF0 /* StackLabel.swift */,
+				D5ACC4E0223D8ACD00CEADF0 /* EmojiCode.swift */,
 				D5ACC4DA223C173E00CEADF0 /* Asm.swift */,
 				D5ACC4DC223C17EF00CEADF0 /* StackEmoji.swift */,
 			);
@@ -428,6 +434,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5ACC4D9223C09FD00CEADF0 /* StackViewController.swift in Sources */,
+				D5ACC4DF223D161200CEADF0 /* StackLabel.swift in Sources */,
+				D5ACC4E1223D8ACD00CEADF0 /* EmojiCode.swift in Sources */,
 				D5ACC4DD223C17EF00CEADF0 /* StackEmoji.swift in Sources */,
 				D5ACC4DB223C173E00CEADF0 /* Asm.swift in Sources */,
 				5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */,
