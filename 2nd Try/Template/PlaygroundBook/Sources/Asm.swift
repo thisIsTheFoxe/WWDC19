@@ -86,7 +86,7 @@ public class Asm{
     }
     
     public func END(){
-        StackViewController.isDone = true
+        //reset ?
     }
     
     public func reset(){

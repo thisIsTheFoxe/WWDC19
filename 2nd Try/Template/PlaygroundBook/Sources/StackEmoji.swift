@@ -13,7 +13,7 @@ enum Value: Int{
     case zero = 0, one = 1, two, three, four, five, six, seven, eight, nine, ten
 }
 enum Emoji{
-    case In, Out, Add, Sub, Fwd, Bck, IF, EIF, End
+    case  Add, Sub, Fwd, Bck, IF, EIF, End, Out//, In
     case Number(Value)
 }
 extension Emoji: RawRepresentable{
@@ -43,7 +43,7 @@ extension Emoji: RawRepresentable{
         case "🤘": self = .EIF
         case "👈": self = .Bck
         case "👉": self = .Fwd
-        case "🎙": self = .In
+        //case "🎙": self = .In
         case "🎉": self = .Out
         case "🛑": self = .End
         default:
@@ -70,7 +70,7 @@ extension Emoji: RawRepresentable{
         case .EIF : return "🤘"
         case .Bck : return "👈"
         case .Fwd : return "👉"
-        case .In : return "🎙"
+        //case .In : return "🎙"
         case .Out : return "🎉"
         case .End: return "🛑"
         }

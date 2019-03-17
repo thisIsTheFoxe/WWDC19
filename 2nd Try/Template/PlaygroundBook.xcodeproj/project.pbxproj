@@ -20,6 +20,12 @@
 		5EF2F9AE2054BBF300191409 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF2F9AD2054BBF300191409 /* LiveViewController.swift */; };
 		5EF2F9B72054E6FB00191409 /* Chapters in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5EF2F9B62054E6F900191409 /* Chapters */; };
 		5EF2F9B82054E6FE00191409 /* Sources in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5EF2F9A52054BBB200191409 /* Sources */; };
+		D543F0CF223E5300002E39E8 /* Page1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D543F0CE223E5300002E39E8 /* Page1.mp3 */; };
+		D543F0D0223E5300002E39E8 /* Page1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D543F0CE223E5300002E39E8 /* Page1.mp3 */; };
+		D550B349223E593F00F0A637 /* Mem.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D550B347223E593F00F0A637 /* Mem.mp3 */; };
+		D550B34A223E593F00F0A637 /* Mem.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D550B347223E593F00F0A637 /* Mem.mp3 */; };
+		D550B34B223E593F00F0A637 /* Pointer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D550B348223E593F00F0A637 /* Pointer.mp3 */; };
+		D550B34C223E593F00F0A637 /* Pointer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D550B348223E593F00F0A637 /* Pointer.mp3 */; };
 		D5ACC4D4223C01A900CEADF0 /* LiveView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E086DCC2051DDAE004D8D25 /* LiveView.storyboard */; };
 		D5ACC4D9223C09FD00CEADF0 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC4D8223C09FD00CEADF0 /* StackViewController.swift */; };
 		D5ACC4DB223C173E00CEADF0 /* Asm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC4DA223C173E00CEADF0 /* Asm.swift */; };
@@ -27,7 +33,6 @@
 		D5ACC4DF223D161200CEADF0 /* StackLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC4DE223D161200CEADF0 /* StackLabel.swift */; };
 		D5ACC4E1223D8ACD00CEADF0 /* EmojiCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC4E0223D8ACD00CEADF0 /* EmojiCode.swift */; };
 		D5ACC4E5223DDAFB00CEADF0 /* Page2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D5ACC4E2223DDAF900CEADF0 /* Page2.mp3 */; };
-		D5ACC4E6223DDAFB00CEADF0 /* Page1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D5ACC4E3223DDAFA00CEADF0 /* Page1.mp3 */; };
 		D5ACC4E7223DDAFB00CEADF0 /* Page3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D5ACC4E4223DDAFB00CEADF0 /* Page3.mp3 */; };
 /* End PBXBuildFile section */
 
@@ -120,13 +125,15 @@
 		5EF2F9AB2054BBF300191409 /* libBook_Sources.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBook_Sources.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF2F9AD2054BBF300191409 /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
 		5EF2F9B62054E6F900191409 /* Chapters */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Chapters; sourceTree = "<group>"; };
+		D543F0CE223E5300002E39E8 /* Page1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Page1.mp3; sourceTree = "<group>"; };
+		D550B347223E593F00F0A637 /* Mem.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mem.mp3; sourceTree = "<group>"; };
+		D550B348223E593F00F0A637 /* Pointer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pointer.mp3; sourceTree = "<group>"; };
 		D5ACC4D8223C09FD00CEADF0 /* StackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
 		D5ACC4DA223C173E00CEADF0 /* Asm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asm.swift; sourceTree = "<group>"; };
 		D5ACC4DC223C17EF00CEADF0 /* StackEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackEmoji.swift; sourceTree = "<group>"; };
 		D5ACC4DE223D161200CEADF0 /* StackLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackLabel.swift; sourceTree = "<group>"; };
 		D5ACC4E0223D8ACD00CEADF0 /* EmojiCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCode.swift; sourceTree = "<group>"; };
 		D5ACC4E2223DDAF900CEADF0 /* Page2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Page2.mp3; sourceTree = "<group>"; };
-		D5ACC4E3223DDAFA00CEADF0 /* Page1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Page1.mp3; sourceTree = "<group>"; };
 		D5ACC4E4223DDAFB00CEADF0 /* Page3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Page3.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -258,7 +265,9 @@
 		5EF2F9792054B64800191409 /* PrivateResources */ = {
 			isa = PBXGroup;
 			children = (
-				D5ACC4E3223DDAFA00CEADF0 /* Page1.mp3 */,
+				D550B347223E593F00F0A637 /* Mem.mp3 */,
+				D550B348223E593F00F0A637 /* Pointer.mp3 */,
+				D543F0CE223E5300002E39E8 /* Page1.mp3 */,
 				D5ACC4E2223DDAF900CEADF0 /* Page2.mp3 */,
 				D5ACC4E4223DDAFB00CEADF0 /* Page3.mp3 */,
 				5EF2F97E2054B6E400191409 /* ManifestPlist.strings */,
@@ -394,11 +403,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D550B349223E593F00F0A637 /* Mem.mp3 in Resources */,
 				D5ACC4E5223DDAFB00CEADF0 /* Page2.mp3 in Resources */,
-				D5ACC4E6223DDAFB00CEADF0 /* Page1.mp3 in Resources */,
 				5EF2F97C2054B6E400191409 /* ManifestPlist.strings in Resources */,
 				5E086DCA2051DDAE004D8D25 /* LiveView.storyboard in Resources */,
+				D543F0CF223E5300002E39E8 /* Page1.mp3 in Resources */,
 				D5ACC4E7223DDAFB00CEADF0 /* Page3.mp3 in Resources */,
+				D550B34B223E593F00F0A637 /* Pointer.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +417,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D550B34C223E593F00F0A637 /* Pointer.mp3 in Resources */,
+				D550B34A223E593F00F0A637 /* Mem.mp3 in Resources */,
+				D543F0D0223E5300002E39E8 /* Page1.mp3 in Resources */,
 				5EA2E3CA2056F35B00416A35 /* LiveViewTestAppLaunchScreen.storyboard in Resources */,
 				D5ACC4D4223C01A900CEADF0 /* LiveView.storyboard in Resources */,
 			);

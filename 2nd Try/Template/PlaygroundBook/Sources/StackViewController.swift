@@ -7,10 +7,18 @@
 
 import UIKit
 import PlaygroundSupport
+import AVKit
+import SpriteKit
 
 class StackViewController: UIViewController {
     
     var codeArray = [StackEmoji]()
+    
+    var skipNest = 0
+    var nextIx = 0
+    var didEnd = false
+    
+    var ifStack = [(key: String, value: PlaygroundValue)]()
     
     var stackViews = [UIView]()
     var stackLabels = [StackLabel]()
@@ -21,16 +29,27 @@ class StackViewController: UIViewController {
     
     let machine = Asm()
     
-    static var isDone = true
+    var player: AVAudioPlayer!
+    
+    var currentPage: Int!
+    var errorCompletion: ((String)->())!
     
     var animationSpeed = 1.0
+    
+    init(currentPage: Int, errorCallback: @escaping (String)->()) {
+        super.init(nibName: nil, bundle: nil)
+        self.currentPage = currentPage
+        self.errorCompletion = errorCallback
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let viewSize = (self.view.frame.width / 8) - 10
-        
-        //TODO: Add result label
         
         outLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 50, height: 80))
         outLabel.text = ""
@@ -40,7 +59,10 @@ class StackViewController: UIViewController {
         outLabel.adjustsFontSizeToFitWidth = true
         outLabel.textAlignment = .center
         view.addSubview(outLabel)
-
+        
+        let skView = SKView()
+        skView.presentScene(SKScene())
+        view.addSubview(skView)
         
         codeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 700, height: 80))
         codeLabel.center = CGPoint(x: view.center.x, y: 100)
@@ -93,11 +115,38 @@ class StackViewController: UIViewController {
             }
             
         }
+        
+        guard let urlStr = Bundle.main.path(forResource: "Page\(currentPage ?? 1)", ofType: ".mp3") else { fatalError() }
+        self.player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlStr), fileTypeHint: "mp3")
+        player?.volume = 0.1
+        player?.numberOfLoops = -1
+        player?.play()
+        
+        //guard let urlStr2 = Bundle.main.path(forResource: "Mem", ofType: ".mp3") else { fatalError() }
+
+
         let str = """
 👍2️⃣🤟👉1️⃣👍3️⃣🤟👉1️⃣👍3️⃣🎉👈1️⃣👎1️⃣🤘👈1️⃣👎1️⃣🤘
 🛑
 """
-        setEmojiCode(str)
+//        setAsmCode(["ADD" : PlaygroundValue.integer(3)])
+//        setAsmCode(["IF" : PlaygroundValue.integer(-1)])
+//        setAsmCode(["SUB" : PlaygroundValue.integer(1)])
+//        setAsmCode(["FWD" : PlaygroundValue.integer(1)])
+//        setAsmCode(["ADD" : PlaygroundValue.integer(3)])
+//        setAsmCode(["IF" : PlaygroundValue.integer(-1)])
+//        setAsmCode(["SUB" : PlaygroundValue.integer(1)])
+//        setAsmCode(["FWD" : PlaygroundValue.integer(1)])
+//        setAsmCode(["ADD" : PlaygroundValue.integer(3)])
+//        setAsmCode(["BCK" : PlaygroundValue.integer(1)])
+//        setAsmCode(["EIF" : PlaygroundValue.integer(-1)])
+//        setAsmCode(["BCK" : PlaygroundValue.integer(1)])
+//        setAsmCode(["EIF" : PlaygroundValue.integer(-1)])
+//        setAsmCode(["SUB" : PlaygroundValue.integer(2)])
+//        setAsmCode(["END" : PlaygroundValue.integer(-1)])
+        
+
+        //setEmojiCode(str)
     }
     
     override func viewDidLayoutSubviews() {
@@ -143,8 +192,98 @@ class StackViewController: UIViewController {
         stackLabels[i].toggleChar()
     }
     
+    func setAsmCode(_ dic: [String: PlaygroundValue], ifIndex: Int? = nil){
+        var cmd = (key: "", value: PlaygroundValue.integer(-1))
+        if let iIx = ifIndex{
+            cmd = ifStack[iIx]
+        }else{
+            guard let c = dic.first else { fatalError("No CMD") }
+            cmd = c
+            ifStack.append(cmd)
+        }
+        guard !didEnd || cmd.key != "newCode" else { return }
+        
+        let t = DispatchTime.now() + 0.75
+        if case let PlaygroundValue.integer(val) = cmd.value{
+            self.codeLabel.text = "\(cmd.key)(\(val < 0 ? "": String(val)))"
+        }
+        guard skipNest == 0 else{
+            if(cmd.key == "IF"){
+                skipNest += 1
+            }else if (cmd.key == "EIF"){
+                skipNest -= 1
+            }
+            return
+        }
+        
+        switch cmd.key {
+        case "RESET":
+            machine.reset()
+            compilerAdd(0, delay: DispatchTime.now())
+            for l in stackLabels{ DispatchQueue.main.async{ l.updateContent(0) } }
+        case "ADD":
+            guard case let PlaygroundValue.integer(val) = cmd.value else {
+                fatalError("No Value")
+            }
+            compilerAdd(val, delay: t)
+        case "SUB":
+            guard case let PlaygroundValue.integer(val) = cmd.value else {
+                fatalError("No Value")
+            }
+            compilerAdd(-val, delay: t)
+        case "FWD":
+            guard case let PlaygroundValue.integer(val) = cmd.value else {
+            fatalError("No Value")
+        }
+        compilerFwd(val, delay: t)
+        case "BCK":
+            guard case let PlaygroundValue.integer(val) = cmd.value else {
+                fatalError("No Value")
+            }
+            compilerFwd(-val, delay: t)
+        case "OUT":
+            compilerOut(delay: t)
+        //case "IN": UIAlertController(title: "Input", message: "Please insert a Character", preferredStyle: .)
+        case "IF":
+            guard (machine.currentMemeory != 0) else {
+                skipNest = 1
+                break
+            }
+            break
+        case "EIF":
+            if machine.currentMemeory != 0{
+                let currentIx = ifIndex ?? ifStack.count-1
+                var ifNest = 1
+                var eifIx = 0
+                for i in stride(from: currentIx-1, to: 0, by: -1){
+                    guard ifNest != 0 else { eifIx = i; break }
+                    if ifStack[i].key == "IF" {
+                        ifNest -= 1
+                    }else if ifStack[i].key == "EIF"{
+                        ifNest += 1
+                    }
+                }
+                guard ifNest == 0 else { fatalError("NO MATCHING IF") }
+                eifIx += 1
+                for j in eifIx...currentIx{
+                    setAsmCode([:], ifIndex: j)
+                }
+            }
+        case "END": didEnd = true
+            break
+        case "newCode":
+            didEnd = false
+        default:
+            guard ifIndex != nil else { fatalError("unknown CMD") }
+        }
+    }
+    
     func setEmojiCode(_ sourceCode: String) {
-        guard codeArray.isEmpty else{ return }
+        guard codeArray.isEmpty else{
+            errorCompletion("Code was still running!")
+            PlaygroundPage.current.finishExecution()
+            //return
+        }
         self.codeArray = sourceCode.compactMap { (c) -> StackEmoji? in
             guard let e = Emoji(char: c) else { return nil }
             return StackEmoji(e)
@@ -154,7 +293,6 @@ class StackViewController: UIViewController {
     }
     
     func compile() {
-        StackViewController.isDone = false
         var i = 0
         
         var lastCmd: Emoji?
@@ -227,11 +365,8 @@ class StackViewController: UIViewController {
                     loopCount += 1
                     pc = retrunIx
                 }
-                case .In : fatalError("NoInput?")
-                case .Out: guard let scalar = Unicode.Scalar(machine.Out()) else { fatalError("NoUniCode") }
-                DispatchQueue.main.asyncAfter(deadline: delay) {
-                    self.outLabel.text?.append(scalar.escaped(asASCII: true))
-                }
+                //case .In : fatalError("NoInput?")
+                case .Out: compilerOut(delay: delay)
                 case .End:
                     prgEnd = true
                     DispatchQueue.main.asyncAfter(deadline: delay) {
@@ -247,8 +382,16 @@ class StackViewController: UIViewController {
         //show result etc..?
     }//#-end of compile
     
+    func compilerOut(delay: DispatchTime) {
+        guard let scalar = Unicode.Scalar(machine.Out()) else { fatalError("NoUniCode") }
+        DispatchQueue.main.asyncAfter(deadline: delay) {
+            self.outLabel.text?.append(scalar.escaped(asASCII: true))
+        }
+    }
+    
     func compilerAdd(_ value: Int, delay: DispatchTime){
         //TODO: Animation
+        
         if(value > 0){
             machine.INC(value)
         }else{
@@ -260,6 +403,10 @@ class StackViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
             self.stackLabels[p].updateContent(m)
+            
+            guard let urlStr = Bundle.main.path(forResource: "Pointer", ofType: ".mp3") else { fatalError() }
+            let p = AVPlayer(url: URL(fileURLWithPath: urlStr))
+            p.play()
         }
     }
     
@@ -275,6 +422,10 @@ class StackViewController: UIViewController {
             UIView.animate(withDuration: 0.5 * self.animationSpeed) {
                 self.poitnerLabel.center.x = self.stackViews[p].center.x
             }
+            
+            guard let urlStr = Bundle.main.path(forResource: "Mem", ofType: ".mp3") else { fatalError() }
+            let p = AVPlayer(url: URL(fileURLWithPath: urlStr))
+            p.play()
         }
     }
 }
@@ -283,6 +434,7 @@ extension StackViewController: PlaygroundLiveViewMessageHandler{
     func receive(_ message: PlaygroundValue) {
         switch message {
         case .string(let code): setEmojiCode(code)
+        case .dictionary(let asmDic): setAsmCode(asmDic)
         default:
             fatalError("message not recognized")
         }

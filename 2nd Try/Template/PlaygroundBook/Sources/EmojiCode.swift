@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PlaygroundSupport
 
 public protocol EmojiCode {
    // var validatedCode: [StackEmoji] { get }
@@ -23,6 +24,7 @@ extension String: EmojiCode{
     */
         
     public func validate() {
+        
         let validatedCode = self.compactMap { (c) -> StackEmoji? in
             guard let e = Emoji(char: c) else { return nil }
             return StackEmoji(e)
@@ -60,6 +62,5 @@ extension String: EmojiCode{
     public func execute() {
         send(emojiCode: self)
     }
-    
     
 }
