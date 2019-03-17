@@ -42,11 +42,14 @@ public func send(emojiCode: String){
 }
 
 public func send(command: String, value: Int? = nil){
-    let page = PlaygroundPage.current
-    
-    if let proxy = page.liveView as? PlaygroundRemoteLiveViewProxy {
-        let message: PlaygroundValue = .dictionary([command: .integer(value ?? -1)])
-        proxy.send(message)
+    DispatchQueue.main.async {
+        let page = PlaygroundPage.current
+        
+        if let proxy = page.liveView as? PlaygroundRemoteLiveViewProxy {
+            let message: PlaygroundValue = .dictionary([command: .integer(value ?? -1)])
+            proxy.send(message)
+        }
+        sleep(1)
     }
 }
 

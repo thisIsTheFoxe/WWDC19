@@ -30,6 +30,7 @@ class StackViewController: UIViewController {
     let machine = Asm()
     
     var player: AVAudioPlayer!
+    var soundEffctPlayer: AVAudioPlayer!
     
     var currentPage: Int!
     var errorCompletion: ((String)->())!
@@ -53,11 +54,13 @@ class StackViewController: UIViewController {
         
         outLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 50, height: 80))
         outLabel.text = ""
-        outLabel.backgroundColor = .yellow
         outLabel.center = CGPoint(x: view.center.x, y: view.center.y - 120)
         outLabel.font = UIFont(name: "Menlo", size: 30)
         outLabel.adjustsFontSizeToFitWidth = true
         outLabel.textAlignment = .center
+        outLabel.backgroundColor = UIColor.darkGray
+        outLabel.textColor = UIColor.white
+        
         view.addSubview(outLabel)
         
         let skView = SKView()
@@ -75,7 +78,8 @@ class StackViewController: UIViewController {
         for i in 0...7{
             let newView = UIView(frame: CGRect(x: (CGFloat(i)*(viewSize+9)) + 9, y: 0, width: viewSize, height: viewSize*1.2))
             newView.center.y = view.center.y + 50
-            newView.backgroundColor = .orange
+            newView.backgroundColor = UIColor(red: 247/255, green: 147/255, blue: 59/255, alpha: 1)
+            newView.layer.cornerRadius = viewSize*0.2
             newView.tag = i
             let tapView = UITapGestureRecognizer(target: self, action: #selector(StackViewController.toggleLabel))
             newView.addGestureRecognizer(tapView)
@@ -115,45 +119,43 @@ class StackViewController: UIViewController {
             }
             
         }
-        
-        guard let urlStr = Bundle.main.path(forResource: "Page\(currentPage ?? 1)", ofType: ".mp3") else { fatalError() }
-        self.player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlStr), fileTypeHint: "mp3")
-        player?.volume = 0.1
-        player?.numberOfLoops = -1
-        player?.play()
-        
-        //guard let urlStr2 = Bundle.main.path(forResource: "Mem", ofType: ".mp3") else { fatalError() }
+            guard let urlStr = Bundle.main.path(forResource: "Page\(self.currentPage ?? 1)", ofType: ".mp3") else { fatalError() }
+            self.player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlStr), fileTypeHint: "mp3")
+        player.numberOfLoops = -1
+            self.player?.play()
 
-
-        let str = """
-👍2️⃣🤟👉1️⃣👍3️⃣🤟👉1️⃣👍3️⃣🎉👈1️⃣👎1️⃣🤘👈1️⃣👎1️⃣🤘
-🛑
-"""
-//        setAsmCode(["ADD" : PlaygroundValue.integer(3)])
-//        setAsmCode(["IF" : PlaygroundValue.integer(-1)])
-//        setAsmCode(["SUB" : PlaygroundValue.integer(1)])
-//        setAsmCode(["FWD" : PlaygroundValue.integer(1)])
-//        setAsmCode(["ADD" : PlaygroundValue.integer(3)])
-//        setAsmCode(["IF" : PlaygroundValue.integer(-1)])
-//        setAsmCode(["SUB" : PlaygroundValue.integer(1)])
-//        setAsmCode(["FWD" : PlaygroundValue.integer(1)])
-//        setAsmCode(["ADD" : PlaygroundValue.integer(3)])
-//        setAsmCode(["BCK" : PlaygroundValue.integer(1)])
-//        setAsmCode(["EIF" : PlaygroundValue.integer(-1)])
-//        setAsmCode(["BCK" : PlaygroundValue.integer(1)])
-//        setAsmCode(["EIF" : PlaygroundValue.integer(-1)])
-//        setAsmCode(["SUB" : PlaygroundValue.integer(2)])
-//        setAsmCode(["END" : PlaygroundValue.integer(-1)])
+        /*
+        setAsmCode(["ADD" : PlaygroundValue.integer(3)])
+        setAsmCode(["IF" : PlaygroundValue.integer(-1)])
+        setAsmCode(["SUB" : PlaygroundValue.integer(1)])
+        setAsmCode(["FWD" : PlaygroundValue.integer(1)])
+        setAsmCode(["ADD" : PlaygroundValue.integer(3)])
+        setAsmCode(["IF" : PlaygroundValue.integer(-1)])
+        setAsmCode(["SUB" : PlaygroundValue.integer(1)])
+        setAsmCode(["FWD" : PlaygroundValue.integer(1)])
+        setAsmCode(["ADD" : PlaygroundValue.integer(3)])
+        setAsmCode(["BCK" : PlaygroundValue.integer(1)])
+        setAsmCode(["EIF" : PlaygroundValue.integer(-1)])
+        setAsmCode(["BCK" : PlaygroundValue.integer(1)])
+        setAsmCode(["EIF" : PlaygroundValue.integer(-1)])
+        setAsmCode(["SUB" : PlaygroundValue.integer(2)])
+        setAsmCode(["END" : PlaygroundValue.integer(-1)])
         
 
-        //setEmojiCode(str)
+         let str = """
+         👍2️⃣🤟👉1️⃣👍3️⃣🤟👉1️⃣👍3️⃣🎉👈1️⃣👎1️⃣🤘👈1️⃣👎1️⃣🤘
+         🛑
+         """
+
+         
+        setEmojiCode(str)
+ */
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         DispatchQueue.main.async {
             self.outLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: 80)
-            self.outLabel.backgroundColor = .yellow
             self.outLabel.center = CGPoint(x: self.view.center.x, y: (self.view.center.y + 150) / 2)
             self.outLabel.font = UIFont(name: "Menlo", size: 30)
             self.outLabel.adjustsFontSizeToFitWidth = true
@@ -276,7 +278,11 @@ class StackViewController: UIViewController {
         default:
             guard ifIndex != nil else { fatalError("unknown CMD") }
         }
+        //TODO: delay
     }
+    
+    
+    //MARK: - Emoji Code
     
     func setEmojiCode(_ sourceCode: String) {
         guard codeArray.isEmpty else{
@@ -378,7 +384,6 @@ class StackViewController: UIViewController {
             pc += 1
             i += 1
         }//end of while
-        
         //show result etc..?
     }//#-end of compile
     
@@ -405,8 +410,8 @@ class StackViewController: UIViewController {
             self.stackLabels[p].updateContent(m)
             
             guard let urlStr = Bundle.main.path(forResource: "Pointer", ofType: ".mp3") else { fatalError() }
-            let p = AVPlayer(url: URL(fileURLWithPath: urlStr))
-            p.play()
+            self.soundEffctPlayer = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlStr))
+            self.soundEffctPlayer?.play()
         }
     }
     
@@ -424,8 +429,8 @@ class StackViewController: UIViewController {
             }
             
             guard let urlStr = Bundle.main.path(forResource: "Mem", ofType: ".mp3") else { fatalError() }
-            let p = AVPlayer(url: URL(fileURLWithPath: urlStr))
-            p.play()
+            self.soundEffctPlayer = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlStr))
+            self.soundEffctPlayer.play()
         }
     }
 }
@@ -433,8 +438,8 @@ class StackViewController: UIViewController {
 extension StackViewController: PlaygroundLiveViewMessageHandler{
     func receive(_ message: PlaygroundValue) {
         switch message {
-        case .string(let code): setEmojiCode(code)
-        case .dictionary(let asmDic): setAsmCode(asmDic)
+        case .string(let code): self.setEmojiCode(code)
+        case .dictionary(let asmDic): self.setAsmCode(asmDic)
         default:
             fatalError("message not recognized")
         }
