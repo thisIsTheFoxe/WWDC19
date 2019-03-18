@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Terms</key>
+	<dict>
+		<key>1-adress-machine</key>
+		<dict>
+			<key>Definition</key>
+			<string>A one instruction set computer (OISC) is the model of a turing-machine (computer) which has a memory and one pointer to the memory. All instructions have at most one parameter.</string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Coding%20is%20fun!/Basics%20of%201-address-machines</string>
+				<key>Title</key>
+				<string>1-address-machine</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

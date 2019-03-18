@@ -26,6 +26,7 @@
 		D550B34A223E593F00F0A637 /* Mem.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D550B347223E593F00F0A637 /* Mem.mp3 */; };
 		D550B34B223E593F00F0A637 /* Pointer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D550B348223E593F00F0A637 /* Pointer.mp3 */; };
 		D550B34C223E593F00F0A637 /* Pointer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D550B348223E593F00F0A637 /* Pointer.mp3 */; };
+		D550B351223FE8BE00F0A637 /* Glossary.plist in Resources */ = {isa = PBXBuildFile; fileRef = D550B350223FE8BE00F0A637 /* Glossary.plist */; };
 		D5ACC4D4223C01A900CEADF0 /* LiveView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E086DCC2051DDAE004D8D25 /* LiveView.storyboard */; };
 		D5ACC4D9223C09FD00CEADF0 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC4D8223C09FD00CEADF0 /* StackViewController.swift */; };
 		D5ACC4DB223C173E00CEADF0 /* Asm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACC4DA223C173E00CEADF0 /* Asm.swift */; };
@@ -128,6 +129,7 @@
 		D543F0CE223E5300002E39E8 /* Page1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Page1.mp3; sourceTree = "<group>"; };
 		D550B347223E593F00F0A637 /* Mem.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mem.mp3; sourceTree = "<group>"; };
 		D550B348223E593F00F0A637 /* Pointer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pointer.mp3; sourceTree = "<group>"; };
+		D550B350223FE8BE00F0A637 /* Glossary.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Glossary.plist; sourceTree = "<group>"; };
 		D5ACC4D8223C09FD00CEADF0 /* StackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
 		D5ACC4DA223C173E00CEADF0 /* Asm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asm.swift; sourceTree = "<group>"; };
 		D5ACC4DC223C17EF00CEADF0 /* StackEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackEmoji.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				D550B347223E593F00F0A637 /* Mem.mp3 */,
+				D550B350223FE8BE00F0A637 /* Glossary.plist */,
 				D550B348223E593F00F0A637 /* Pointer.mp3 */,
 				D543F0CE223E5300002E39E8 /* Page1.mp3 */,
 				D5ACC4E2223DDAF900CEADF0 /* Page2.mp3 */,
@@ -407,6 +410,7 @@
 				D5ACC4E5223DDAFB00CEADF0 /* Page2.mp3 in Resources */,
 				5EF2F97C2054B6E400191409 /* ManifestPlist.strings in Resources */,
 				5E086DCA2051DDAE004D8D25 /* LiveView.storyboard in Resources */,
+				D550B351223FE8BE00F0A637 /* Glossary.plist in Resources */,
 				D543F0CF223E5300002E39E8 /* Page1.mp3 in Resources */,
 				D5ACC4E7223DDAFB00CEADF0 /* Page3.mp3 in Resources */,
 				D550B34B223E593F00F0A637 /* Pointer.mp3 in Resources */,

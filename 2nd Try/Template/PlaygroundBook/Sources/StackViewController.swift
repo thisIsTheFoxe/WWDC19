@@ -124,23 +124,23 @@ class StackViewController: UIViewController {
         player.numberOfLoops = -1
             self.player?.play()
 
-        /*
+        
         setAsmCode(["ADD" : PlaygroundValue.integer(3)])
         setAsmCode(["IF" : PlaygroundValue.integer(-1)])
         setAsmCode(["SUB" : PlaygroundValue.integer(1)])
         setAsmCode(["FWD" : PlaygroundValue.integer(1)])
         setAsmCode(["ADD" : PlaygroundValue.integer(3)])
-        setAsmCode(["IF" : PlaygroundValue.integer(-1)])
-        setAsmCode(["SUB" : PlaygroundValue.integer(1)])
-        setAsmCode(["FWD" : PlaygroundValue.integer(1)])
-        setAsmCode(["ADD" : PlaygroundValue.integer(3)])
-        setAsmCode(["BCK" : PlaygroundValue.integer(1)])
-        setAsmCode(["EIF" : PlaygroundValue.integer(-1)])
+//        setAsmCode(["IF" : PlaygroundValue.integer(-1)])
+//        setAsmCode(["SUB" : PlaygroundValue.integer(1)])
+//        setAsmCode(["FWD" : PlaygroundValue.integer(1)])
+//        setAsmCode(["ADD" : PlaygroundValue.integer(3)])
+//        setAsmCode(["BCK" : PlaygroundValue.integer(1)])
+//        setAsmCode(["EIF" : PlaygroundValue.integer(-1)])
         setAsmCode(["BCK" : PlaygroundValue.integer(1)])
         setAsmCode(["EIF" : PlaygroundValue.integer(-1)])
         setAsmCode(["SUB" : PlaygroundValue.integer(2)])
         setAsmCode(["END" : PlaygroundValue.integer(-1)])
-        
+        /*
 
          let str = """
          👍2️⃣🤟👉1️⃣👍3️⃣🤟👉1️⃣👍3️⃣🎉👈1️⃣👎1️⃣🤘👈1️⃣👎1️⃣🤘
@@ -272,7 +272,19 @@ class StackViewController: UIViewController {
                 }
             }
         case "END": didEnd = true
-            break
+        if currentPage == 1{
+            if machine.out == "iPad"{
+                PlaygroundPage.current.assessmentStatus = .pass(message: "### Well done, let's continue...                \n[**Next Page**](@next)")
+            }else{
+                PlaygroundPage.current.assessmentStatus = .fail(hints: [], solution: "ADD(105)\nOUT()")
+            }
+        }else if currentPage == 2{
+            if machine.out == "Apple"{
+                PlaygroundPage.current.assessmentStatus = .pass(message: "### Well done, let's continue...                \n[**Next Page**](@next)")
+            }else{
+                PlaygroundPage.current.assessmentStatus = .fail(hints: ["What is 65/13?", "65/13 = 5"], solution: nil)
+            }
+        }
         case "newCode":
             didEnd = false
         default:
@@ -280,7 +292,6 @@ class StackViewController: UIViewController {
         }
         //TODO: delay
     }
-    
     
     //MARK: - Emoji Code
     

@@ -53,7 +53,7 @@ public class Asm{
     }
     
     public func BCK(_ i: Int) {
-        guard i >= 0, i <= 8 else {
+        guard i >= 0, i <= 10 else {
             fatalError("Can't add more that max")
         }
         memPointer -= i

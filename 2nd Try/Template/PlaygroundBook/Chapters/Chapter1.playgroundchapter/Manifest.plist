@@ -3,11 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>Name</key>
-	<string>ChapterOneName</string>
+	<string>Coding is fun!</string>
 	<key>Pages</key>
 	<array>
 		<string>PlaygroundPage.playgroundpage</string>
 		<string>PlaygroundPage2.playgroundpage</string>
+		<string>PlaygroundPage3.playgroundpage</string>
 	</array>
 </dict>
 </plist>
