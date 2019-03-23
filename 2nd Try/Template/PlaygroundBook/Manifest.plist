@@ -16,6 +16,8 @@
 	<string>$(SWIFT_VERSION)</string>
 	<key>Name</key>
 	<string>WWDC19</string>
+	<key>ImageReference</key>
+	<string>PlaygroundIcon.png</string>
 	<key>Chapters</key>
 	<array>
 		<string>Chapter1.playgroundchapter</string>

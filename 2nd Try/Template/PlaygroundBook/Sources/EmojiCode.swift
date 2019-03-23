@@ -1,6 +1,5 @@
 //
 //  EmojiCode.swift
-//  Book_Sources
 //
 //  Created by Henrik Storch on 16.03.19.
 //
@@ -9,42 +8,38 @@ import Foundation
 import PlaygroundSupport
 
 public protocol EmojiCode {
-   // var validatedCode: [StackEmoji] { get }
     func validate()
     func execute()
 }
 
 extension String: EmojiCode{
-    /*var validatedCode: [StackEmoji] {
-        return self.compactMap { (c) -> StackEmoji? in
-            guard let e = Emoji(char: c) else { return nil }
-            return StackEmoji(e)
-        }
-    }
-    */
         
     public func validate() {
         
-        let validatedCode = self.compactMap { (c) -> StackEmoji? in
+        //filter everything non-interpretable
+        let validatedCode = self.compactMap { (c) -> DubDubMachine? in
             guard let e = Emoji(char: c) else { return nil }
-            return StackEmoji(e)
+            return DubDubMachine(e)
         }
+        
         var i = 1
         var nest = 0
         var hasTermiatigSymbol = false
         var nextIsNumber = false
+        
+        //do basic syntax-check
         for em in validatedCode{
-            guard nest >= 0 else { fatalError("No matching IF at: \(i-1)") }
+            guard nest >= 0 else { fatalError("No matching 🤟 at: \(i-1)") }
             if nextIsNumber {
                 guard case .Number(_) = em.emoji else{
-                    fatalError("Expected Number at poition: \(i), got: \(em.emoji.rawValue)")
+                    fatalError("Expected number at poition: \(i), got: \(em.emoji.rawValue)")
                 }
             }
             switch em.emoji{
             case .Add, .Bck, .Sub, .Fwd: nextIsNumber = true
             case .Number(_):
                 guard nextIsNumber else {
-                    fatalError("Unexpected Number at poition: \(i)")
+                    fatalError("Unexpected number at poition: \(i)")
                 }
                 nextIsNumber = false
             case .IF: nest += 1
@@ -54,11 +49,12 @@ extension String: EmojiCode{
             }
             i += 1
         }
-        guard nest == 0 else { fatalError("No matchin EndIf") }
-        guard hasTermiatigSymbol else { fatalError("Missing Terminating Symbol") }
-        guard !nextIsNumber else { fatalError("Expected Number at poition: \(i)") }
+        guard nest == 0 else { fatalError("No matchin 🤘") }
+        guard hasTermiatigSymbol else { fatalError("Don't forget to 🤯 your program ;)") }
+        guard !nextIsNumber else { fatalError("Expected number at poition: \(i)") }
     }
     
+    //send code to liveview for execution
     public func execute() {
         send(emojiCode: self)
     }

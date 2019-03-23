@@ -1,24 +1,40 @@
+//#-hidden-code
+//
+//  Contents.swift
+//
+//  Made by: Henrik Storch
+//
+//#-end-hidden-code
 /*:
  # **Now to the interesting stuff...**
  
- ### Because with just those 5 basic function life would be boring... That's why we now add `IF()` and `EIF()`!
+ ### With just those 5 basic functions life would be boring, so we now add `IF()` and [`EIF()`](glossary://EIF)!
  Those can be used to change the flow of your program.
  
- `IF()` in itself is pretty simple: It checks the content of the current cell and if it is zero, it moves through the code, all the way right after the matching `EIF()`. From this point onward your code is executed normally again. If the current cell is non-zero, the code-execution continues normally as well.
- `EIF()` is a little trickier: If the current cell (when `EIF()` is calls) is NON-zero, if goes all the way back through the code to the matching if. Code-execution continues right after that `IF()`. Is the current cell equal to zero when `EIF()` is called, it continues normally with the next command.
- That way we can create [loos]() by initializing a cell with a value "x" and then, for each time the loop is called, it decremets "x" by one. At the `EIF()` statement we have to make sure we chack the same cell with the "x" in it again. The code between `IF()` and `EIF()` will be ran "x"-times.
+ `IF()` just checks the content of the current cell.
+ If it is zero, the program skips all the code that follows until the matching `EIF()`. From that point onward your code is executed normally again.
+ If the current cell is non-zero, the code-execution continues normally with the command following the `IF()`.
+ 
+ [`EIF()`](glossary://EIF) is a little trickier: First, it also checks the current cell. If it is NON-zero, all the code between this `EIF()` and the matching `IF()` will be executed again...
+ If the content of the current cell is equal to zero when `EIF()` is called, it continues normally with the command followin the `EIF()`.
+ 
+ That way we can create [loops](glossary://Loop) by initializing a cell with a value "x" and then, each time the loop is called, it decremets "x" by one. At the `EIF()` statement we then have to make sure we check the same "x"-cell again. The code between `IF()` and `EIF()` will then have run "x"-times.
  
  * callout(Challenge):
-The code bellow fills the 2nd-5th cells of the memory in a loop and prints them out afterwards. Initialize the "x" value at the beginning, so that in the end the value in the second cell (next to the "x"-cell) will be 65.
+The code bellow fills the 2nd-5th cells of the memory in a loop and prints them out afterwards. Initialize the "x" value at the beginning, so that in the end the 2nd cell will have a value of 65.
  
-If you want you can expetiment a bit on this page before going to the [final page]().
+ **By the way**: You can also have several `IF()`s and `EIF()`s within each other.
+
+ - - -
+ 
+If you have time, you can experiment a bit on this page before going to the [**final page**](@next).
+ 
  */
-//#-code-completion(everything, hide)
-//#-code-completion(identifier, show, OUT(), END(), ADD(), SUB(), FWD(), BCK())
-//#-code-completion(identifier, show, IF(), EIF(), RESET())
-
-
 //#-hidden-code
+//#-code-completion(everything, hide)
+//#-code-completion(literal, show, integer)
+//#-code-completion(identifier, show, OUT(), END(), ADD(_:), SUB(_:), FWD(_:), BCK(_:))
+//#-code-completion(identifier, show, IF(), EIF(), RESET())
 //import PlaygroundSupport
 userCodeBegin()
 //#-end-hidden-code
@@ -29,7 +45,7 @@ RESET()     //reset the machine
 
 //print the caracter in the current memory
 
-ADD(<#T##number of loops##Int#>)      //init loop
+ADD(<#T##number of loops##Int#>)      //init loop ("x"-cell)
 IF()        //loop start
 SUB(1)      //decrement "x"
 FWD(1)

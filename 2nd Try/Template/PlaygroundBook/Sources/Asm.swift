@@ -1,6 +1,5 @@
 //
 //  Asm.swift
-//  Book_Sources
 //
 //  Created by Henrik Storch on 15.03.19.
 //
@@ -8,6 +7,7 @@
 import Foundation
 
 public class Asm{
+    
     var mem: [Int] = [0,0,0,0,0,0,0,0]
     var memPointer: Int = 0
     
@@ -64,34 +64,25 @@ public class Asm{
     
     public func Out() -> Int {
         if let scalar = UnicodeScalar(currentMemeory){
-            out.append(Character(scalar))
+            out.append(scalar.escaped(asASCII: false))
         }
         return mem[memPointer];
     }
     
+    /*          //needed to proove trivial turing-machine.
+                //turing-complete nevertheless, tho!!
     public func In(_ i: Int) {
         guard i < 255 else {
             fatalError("Input unreadable")
         }
         currentMemeory = i
     }
-    
-    public func IF(){
-        //if 0 ignore until EIF
-        //else continue normally until EIF and then do the "loop"
-    }
-    
-    public func EIF(){
-        
-    }
-    
-    public func END(){
-        //reset ?
-    }
+ */
     
     public func reset(){
         mem = [0,0,0,0,0,0,0,0]
         memPointer = 0
+        out = ""
     }
 }
 

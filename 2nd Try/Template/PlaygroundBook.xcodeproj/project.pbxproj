@@ -17,9 +17,9 @@
 		5EA2E3DB2056F8D100416A35 /* PlaygroundSupport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA2E3D72056F88700416A35 /* PlaygroundSupport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5EBEC2F0205B399300975D3F /* LiveViewHost.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EBEC2EF205B396500975D3F /* LiveViewHost.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5EF2F97C2054B6E400191409 /* ManifestPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5EF2F97E2054B6E400191409 /* ManifestPlist.strings */; };
-		5EF2F9AE2054BBF300191409 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF2F9AD2054BBF300191409 /* LiveViewController.swift */; };
 		5EF2F9B72054E6FB00191409 /* Chapters in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5EF2F9B62054E6F900191409 /* Chapters */; };
 		5EF2F9B82054E6FE00191409 /* Sources in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5EF2F9A52054BBB200191409 /* Sources */; };
+		D53A036F224556F20005B3E8 /* PlaygroundIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D53A036E224556F10005B3E8 /* PlaygroundIcon.png */; };
 		D543F0CF223E5300002E39E8 /* Page1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D543F0CE223E5300002E39E8 /* Page1.mp3 */; };
 		D543F0D0223E5300002E39E8 /* Page1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D543F0CE223E5300002E39E8 /* Page1.mp3 */; };
 		D550B349223E593F00F0A637 /* Mem.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D550B347223E593F00F0A637 /* Mem.mp3 */; };
@@ -124,8 +124,8 @@
 		5EF2F97D2054B6E400191409 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ManifestPlist.strings; sourceTree = "<group>"; };
 		5EF2F9A52054BBB200191409 /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sources; sourceTree = "<group>"; };
 		5EF2F9AB2054BBF300191409 /* libBook_Sources.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBook_Sources.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		5EF2F9AD2054BBF300191409 /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
 		5EF2F9B62054E6F900191409 /* Chapters */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Chapters; sourceTree = "<group>"; };
+		D53A036E224556F10005B3E8 /* PlaygroundIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlaygroundIcon.png; sourceTree = "<group>"; };
 		D543F0CE223E5300002E39E8 /* Page1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Page1.mp3; sourceTree = "<group>"; };
 		D550B347223E593F00F0A637 /* Mem.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mem.mp3; sourceTree = "<group>"; };
 		D550B348223E593F00F0A637 /* Pointer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pointer.mp3; sourceTree = "<group>"; };
@@ -268,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				D550B347223E593F00F0A637 /* Mem.mp3 */,
+				D53A036E224556F10005B3E8 /* PlaygroundIcon.png */,
 				D550B350223FE8BE00F0A637 /* Glossary.plist */,
 				D550B348223E593F00F0A637 /* Pointer.mp3 */,
 				D543F0CE223E5300002E39E8 /* Page1.mp3 */,
@@ -282,7 +283,6 @@
 		5EF2F9A22054BB3E00191409 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				5EF2F9AD2054BBF300191409 /* LiveViewController.swift */,
 				5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */,
 				D5ACC4D8223C09FD00CEADF0 /* StackViewController.swift */,
 				D5ACC4DE223D161200CEADF0 /* StackLabel.swift */,
@@ -411,6 +411,7 @@
 				5EF2F97C2054B6E400191409 /* ManifestPlist.strings in Resources */,
 				5E086DCA2051DDAE004D8D25 /* LiveView.storyboard in Resources */,
 				D550B351223FE8BE00F0A637 /* Glossary.plist in Resources */,
+				D53A036F224556F20005B3E8 /* PlaygroundIcon.png in Resources */,
 				D543F0CF223E5300002E39E8 /* Page1.mp3 in Resources */,
 				D5ACC4E7223DDAFB00CEADF0 /* Page3.mp3 in Resources */,
 				D550B34B223E593F00F0A637 /* Pointer.mp3 in Resources */,
@@ -469,7 +470,6 @@
 				D5ACC4DD223C17EF00CEADF0 /* StackEmoji.swift in Sources */,
 				D5ACC4DB223C173E00CEADF0 /* Asm.swift in Sources */,
 				5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */,
-				5EF2F9AE2054BBF300191409 /* LiveViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,7 +676,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.LiveViewTestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thisIsTheFoxe.WWDC19;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
@@ -699,7 +699,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.LiveViewTestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thisIsTheFoxe.WWDC19;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
 					"\"$(OTHER_FRAMEWORKS_DIR)\"",

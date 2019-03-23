@@ -1,12 +1,11 @@
 //
-//  See LICENSE folder for this template’s licensing information.
+//  LiveView.swift
 //
-//  Abstract:
-//  Instantiates a live view and passes it to the PlaygroundSupport framework.
+//  Made by: Henrik Storch
 //
 
 import UIKit
 import PlaygroundSupport
 
 // Instantiate a new instance of the live view from the book's auxiliary sources and pass it to PlaygroundSupport.
-PlaygroundPage.current.liveView = instantiateLiveView(1)
+PlaygroundPage.current.liveView = instantiateLiveView(2)

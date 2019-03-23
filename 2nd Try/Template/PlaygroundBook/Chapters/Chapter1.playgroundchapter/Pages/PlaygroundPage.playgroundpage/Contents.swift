@@ -1,43 +1,57 @@
+//#-hidden-code
+//
+//  Contents.swift
+//
+//  Made by: Henrik Storch
+//
+//#-end-hidden-code
 /*:
  # **Hello and welcome to my Scholarship PlaygroundBook.**
  
- The goal of this books is to teach you about basic low-level programming languages and to introduce you to a coding language I came up with myself.
+ On this and the following pages I will teach you about [1-Address-Machines](glossary://1-Address-Machine). This one has a memory of eight [bytes](glossary://Byte), which you can see in the live view. Each is displayed either as an integer or as an [Unicode character](glossary://Unicode%20Character). You can toggle between those two by tapping on a cell.
  
- On this and the following page you see a simulation of a [1-adress-machine](glossary://1-adress-machine). It has a memory [stack]() of eight [bytes](), which you can see in the live view. Each byte is shown as an integer. If you tap on a cell you can toggle the cell to show you the content of itself as a [uinicode character]().
- Below the cells you can see an arrow, pointing to the cell that is currently selected. You can move the [**"Pointer"**]() by calling the functions `FWD(...)` to move to pointer to the right or `BCK(...)` to move the pointer to the left.
-Furthermore, you can `ADD(...)` or `SUB(...)` (subtract) values from the current cells.
+ Below the cells you can see an arrow, pointing to the cell that is currently selected. You can move the [**"Pointer"**](glossary://Pointer) and change the value of the selected cell by calling the corresponding functions:
+ 
+ * `ADD(i: Int)` to add to the current cell
+ * `SUB(i: Int)` to subtract from the current cell
+ * `FWD(i: Int)` to move the pointer to the right
+ * `BCK(i: Int)` to move the pointer to the left
 
- The last two things you need to know is that the function `OUT()` just prints out the character of the current cell (on which the pointer points) into the gray area. And `END()` terminated the program.
+ The last two functions are:
+1. `OUT()` prints out the Unicode character of the current (selected) cell into the gray area.
+2. `END()`. This one is required to terminate the program.
+ 
  
  * callout(Challenge):
  Now, try to add the value of the character "i" (105) into the first cell and print it out.
  
-**By the way**: The pointer and the cells "wrap" meaning if you go 'over the to' so to say, you start from the beginning. E.g. 8+1=0; 0-1=8, for the pointer (similar with the cells).
+ **By the way**: The pointer and the cells ["wrap"](glossary://Wrapping).
+ 
+ [**Here**](@next) you can continue to the next page...
+  
  */
 
 //#-hidden-code
 //import PlaygroundSupport
+//#-code-completion(everything, hide)
+//#-code-completion(literal, show, integer)
+//#-code-completion(identifier, show, OUT(), END(), ADD(_:), SUB(_:), FWD(_:), BCK(_:))
 userCodeBegin()
 //#-end-hidden-code
 
-
-//#-code-completion(everything, hide)
-
-//#-code-completion(description, show, "ADD(_ i: Int)", "SUB()", "FWD(i k:)")
-
 RESET()     //reset the machine
 //#-editable-code
-//add ascii code for character "i" to current memory
+//add integer code for character "i" to current memory
 
 //print the caracter in the current memory
 
 //#-end-editable-code
 FWD(1)      //move one cell to the right
-ADD(80)     //set code for character "P"
+ADD(80)     //set cell content of cell 1 to 80
 OUT()       //print character
-ADD(17)     //set code for character "a"
+ADD(17)     //set cell content to 97
 OUT()       //print character
-ADD(3)      //set code for character "d"
+ADD(3)      //set cell content to 100
 OUT()       //print character
 END()       //end of program
 

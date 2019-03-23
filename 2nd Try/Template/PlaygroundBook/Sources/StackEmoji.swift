@@ -1,6 +1,5 @@
 //
-//  StackEmoji.swift
-//  Book_Sources
+//  DubDubMachine.swift
 //
 //  Created by Henrik Storch on 14.03.19.
 //
@@ -12,7 +11,9 @@ import Foundation
 enum Value: Int{
     case zero = 0, one = 1, two, three, four, five, six, seven, eight, nine, ten
 }
+
 enum Emoji{
+    //IN not needed, but can be extended to create trivial turing machine
     case  Add, Sub, Fwd, Bck, IF, EIF, End, Out//, In
     case Number(Value)
 }
@@ -45,7 +46,7 @@ extension Emoji: RawRepresentable{
         case "👉": self = .Fwd
         //case "🎙": self = .In
         case "🎉": self = .Out
-        case "🛑": self = .End
+        case "🤯": self = .End
         default:
             return nil
         }
@@ -72,17 +73,17 @@ extension Emoji: RawRepresentable{
         case .Fwd : return "👉"
         //case .In : return "🎙"
         case .Out : return "🎉"
-        case .End: return "🛑"
+        case .End: return "🤯"
         }
     }
 }
 
-struct StackEmoji {
+struct DubDubMachine {
     var emoji: Emoji
     var value: Int?
     
     static let allNumberEmoji = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣","🔟"]
-    static let allCommandEmoji = ["🎉","🎙","👍","👎","🤟","🤘","👉","👈","🛑"]
+    static let allCommandEmoji = ["🎉","🎙","👍","👎","🤟","🤘","👉","👈","🤯"]
     
     init(_ emoji: Emoji) {
         self.emoji = emoji
