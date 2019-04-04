@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Terms</key>
+	<dict>
+		<key>Turing Machine</key>
+		<dict>
+			<key>Definition</key>
+			<string>A Turing-Machine is a model of a machine that maipulates symbols on a &quot;tape&quot; acording to pre-defined rules. To do that the machine can read the current symbol, write a new symbol and move the band to the right, the left, or not at all.</string>
+		</dict>
+		<key>Turing Complete</key>
+		<dict>
+			<key>Definition</key>
+			<string>A programming laguage is said to be Turing-Complete if it can simulate a Turing Machine. Such a language can (theoretically) do the same things modern languages can do.</string>
+		</dict>
+		<key>Interpreter</key>
+		<dict>
+			<key>Definition</key>
+			<string>A code interpreter is a program that (instead of &quot;compiling&quot; the source code into an executable file) reads the source code, analyses it and runs it directly. </string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Coding%20is%20fun!/🤯%20DubDubMachine</string>
+				<key>Title</key>
+				<string>DubDubMachine</string>
+			</dict>
+		</dict>
+		<key>DubDubMachine</key>
+		<dict>
+			<key>Definition</key>
+			<string>DubDubMachine is an esoteric, low-level programming language. Designed by me and specially made for this WWDC19 Scholarship submission. It is trivial Turing-Complete with one additional `IN(...)` function. DubDubMachine consist of only 8 Unicode emoji characters. All other symbols are ignored.</string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Coding%20is%20fun!/🤯%20DubDubMachine</string>
+				<key>Title</key>
+				<string>DubDubMachine</string>
+			</dict>
+		</dict>
+		<key>Esoteric Programming Languages</key>
+		<dict>
+			<key>Definition</key>
+			<string>An esoteric programming language (or esolang) is a programming language designed to test the boundaries of programming language design, as a proof of concept, as software art or simply as a joke.</string>
+		</dict>
+		<key>EIF</key>
+		<dict>
+			<key>Definition</key>
+			<string>In this context `EIF` stands for EndIF, indicating the end of the if block.</string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Coding%20is%20fun!/🧐%20Advanced%201-Address-Machines</string>
+				<key>Title</key>
+				<string>Advanced 1-Address-Machines</string>
+			</dict>
+		</dict>
+		<key>Loop</key>
+		<dict>
+			<key>Definition</key>
+			<string>In programming a loop is a block of code that is being executed a number of times. Typically with an in- or decreasing counter variable.</string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Coding%20is%20fun!/🧐%20Advanced%201-Address-Machines</string>
+				<key>Title</key>
+				<string>Advanced 1-Address-Machines</string>
+			</dict>
+		</dict>
+		<key>Pointer</key>
+		<dict>
+			<key>Definition</key>
+			<string>A Pointer in computer science is a variable which contains an address of the memory. In this book the Pointer is displayed as &quot;⬆️&quot;.</string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Coding%20is%20fun!/🤖%20Basics%20of%201-Address-Machines</string>
+				<key>Title</key>
+				<string>1-Address-Machines</string>
+			</dict>
+		</dict>
+		<key>Unicode Character</key>
+		<dict>
+			<key>Definition</key>
+			<string>A character that is encoded by Unicode standards. Each character has its own numeric value. The characters 0-127 are also called ASCII characters.</string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Coding%20is%20fun!/🤖%20Basics%20of%201-Address-Machines</string>
+				<key>Title</key>
+				<string>1-Address-Machines</string>
+			</dict>
+		</dict>
+		<key>Byte</key>
+		<dict>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Coding%20is%20fun!/🤖%20Basics%20of%201-Address-Machines</string>
+				<key>Title</key>
+				<string>1-Address-Machines</string>
+			</dict>
+			<key>Definition</key>
+			<string>A byte is made up of eight binary digits (0 or 1) which all together display a value between 0 and 255 (0x00-0xFF in hex).</string>
+		</dict>
+		<key>1-Address-Machine</key>
+		<dict>
+			<key>Definition</key>
+			<string>A one instruction set computer (OISC) is the model of a Turing-Machine (computer) which has a memory and one pointer to the memory. All instructions have at most one parameter.</string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Coding%20is%20fun!/🤖%20Basics%20of%201-Address-Machines</string>
+				<key>Title</key>
+				<string>1-Address-Machines</string>
+			</dict>
+		</dict>
+		<key>Wrapping</key>
+		<dict>
+			<key>Definition</key>
+			<string>A circular or ring buffer "wraps". Meaning, that if a value &quot;overflows&quot; it starts again at zero. E.g. a wrapping byte behaves like this: 255+1=0; 0-1=255 etc. because 255 is the maximum value.</string>
+			<key>FirstUse</key>
+			<dict>
+				<key>PageReference</key>
+				<string>Coding%20is%20fun!/🤖%20Basics%20of%201-Address-Machines</string>
+				<key>Title</key>
+				<string>1-Address-Machines</string>
+			</dict>
+		</dict>
+		<key>Overflow</key>
+		<dict>
+			<key>Definition</key>
+			<string>In computer-science an overflow occurs if a value goes beyond (or over) its maximum value. Likewise works an underflow. E.g. the maximum value of a byte is 255.</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
